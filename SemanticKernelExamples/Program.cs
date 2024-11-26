@@ -7,7 +7,6 @@ using SemanticKernelExamples.Plugins;
 // Populate values from your OpenAI deployment
 var modelId = "gpt-4o";
 var apiKey = "";
-//var organizationId = "org-0GgBrZpImgdwX2eEfHpIdzIh";
 
 // Create a kernel with Azure OpenAI chat completion
 var builder = Kernel.CreateBuilder().AddOpenAIChatCompletion(modelId, apiKey);
@@ -17,7 +16,7 @@ Kernel kernel = builder.Build();
 var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
 
 // Add a plugin (the LightsPlugin class is defined below)
-kernel.Plugins.AddFromType<LightsPlugin>("Lights");
+kernel.Plugins.AddFromType<EmailPlugin>("SendEmail");
 
 // Enable planning
 OpenAIPromptExecutionSettings openAIPromptExecutionSettings = new()
